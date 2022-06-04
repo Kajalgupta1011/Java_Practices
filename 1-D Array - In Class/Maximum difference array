@@ -1,0 +1,94 @@
+Maximum difference array
+Medium
+
+Time Limit: 2 sec
+Memory Limit: 128000 kB
+
+Problem Statement
+Given an array of integers of size N, your task is to find the maximum parity index of this array.
+Parity Index is the maximum difference between two indices i and j (1 <= i <= j <= N) of an array A such that Ai < Aj.
+
+Input
+First line of contains a single integer N, next line contains N space separated integers depicting the values of array.
+
+Constraints:-
+1 < = N < = 100000
+1 < = Arr[i] < = 100000
+
+Output
+Print the maximum value of j- i under the given condition, if no pair satisfies the condition print -1.
+
+Example
+Sample Input:-
+5
+1 2 3 4 5
+
+Sample Output:-
+4
+
+Explanation:
+The maximum difference of jth - ith index is 4:(4th - 0th), also arr[4] > arr[0]
+
+
+Sample Input:-
+5
+5 4 3 2 1
+
+Sample Output:-
+-1
+
+---------------------------------------------------------------
+---------------------------------------------------------------
+
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	static int maxDiff(int []arr,int n)
+	{
+        // `diff` stores the maximum value of `j-i` such that nums[j] > nums[i]
+        int diff =-1;
+ 
+        // base case
+        if (arr == null || n== 0) {
+            return diff;
+        }
+        // create an auxiliary array of size `n`
+        int[] aux = new int[n];
+ 
+        // aux[j] stores the maximum element in subarray nums[j, n-1]
+        aux[n - 1] = arr[n - 1];
+        for (int j = n - 2; j >= 0; j--) {
+            aux[j] = Integer.max(arr[j], aux[j + 1]);
+        }
+ 
+        // Find maximum `j-i` using the auxiliary array
+        for (int i = 0, j = 0; i < n && j < n; )
+        {
+            if (arr[i] < aux[j])
+            {
+                diff = Integer.max(diff, j - i);
+                j++;
+            }
+            else {
+                i++;
+            }
+        }
+ 
+        return diff;
+	}
+	public static void main (String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int t=sc.nextInt();
+	int i;
+		int []arr=new int[t];
+		for(i=0;i<t;i++)
+		{
+			arr[i]=sc.nextInt();
+		}
+		System.out.println(maxDiff(arr,t));
+		                   // Your code here
+	}
+}
