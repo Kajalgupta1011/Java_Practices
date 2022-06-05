@@ -1,1 +1,1 @@
-# Newton_School
+Java Practices
