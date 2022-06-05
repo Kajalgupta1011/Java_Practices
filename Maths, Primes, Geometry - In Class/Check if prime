@@ -1,0 +1,64 @@
+Check if prime
+Easy
+
+Time Limit: 2 sec
+Memory Limit: 128000 kB
+
+Problem Statement
+Given an integer, print whether that integer is a prime number or not.
+
+Input
+First line of input contains an integer T, showing the number of test cases. Every test case is a single integer A.
+
+Constraints
+1 <= T <= 100
+1 <= A <= 10^8
+
+Output
+If the given integer is prime, print 'Yes', else print 'No'.
+
+Example
+Sample Input
+3
+5
+9
+13
+
+Output
+Yes
+No
+Yes
+
+---------------------------------------------------------------
+---------------------------------------------------------------
+
+
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+                      // Your code here
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		for(int i=0;i<t;i++){
+			long n=sc.nextLong();
+			long a=n/2;
+			int c=1;
+			for(long j=2;j<=Math.sqrt(n);j++){
+				if(n%j==0){
+					c=0;
+				break;
+				}	
+			}
+			if(n<=1)
+				c=0;
+			if(c==0)
+				System.out.println("No");
+			else
+				System.out.println("Yes");
+		}
+	}
+}
