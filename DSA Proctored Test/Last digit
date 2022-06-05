@@ -1,0 +1,35 @@
+Last digit
+Easy
+
+Time Limit: 2 sec
+Memory Limit: 128000 kB
+Problem Statement
+Given an integer N print the last digit of the given integer.
+Input
+User Task:
+Since this will be a functional problem, you don't have to take input. You just have to complete the function LastDigit() that takes integer N as argument.
+
+Constraints:-
+1 <= N <= 10000
+Output
+Return the last digit of the given integer.
+Example
+Sample Input:-
+123
+
+Sample Output:-
+3
+
+Sample Input:-
+6
+
+Sample Output:-
+6
+
+
+---------------------------------------------------------------
+---------------------------------------------------------------
+static int LastDigit(int N){
+    int num = N % 10;
+    return num;
+}
