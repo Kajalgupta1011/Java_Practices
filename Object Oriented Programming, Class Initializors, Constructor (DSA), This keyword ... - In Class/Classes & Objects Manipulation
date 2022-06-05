@@ -1,0 +1,47 @@
+Classes & Objects Manipulation
+Easy
+
+Time Limit: 2 sec
+Memory Limit: 128000 kB
+Problem Statement
+Create a class named 'Student' with String variable 'name' and integer variable 'roll_no'.
+You need to perform the below operations:
+
+Assign the value of roll_no as given by the user
+
+Assign the value of name as given by the user
+
+
+by creating an object of the class "Student".
+Finally, you have to print the name of the Student and roll number
+Input
+The input contains a single line of String and integer value separated by space.
+Output
+Print the name and roll number in a single line separated by space.
+Example
+Input:
+Gaurav 1
+
+Output:
+Gaurav 1
+
+Input:
+Swapnil 2
+
+Output:
+Swapnil 2
+
+
+---------------------------------------------------------------
+---------------------------------------------------------------
+static class Student {
+	String name;
+	int rollNumber;
+}
+
+public static Student myFunction (String name, int rollNumber){
+	Student obj = new Student();
+	obj.name = name;
+	obj.rollNumber = rollNumber;
+	return obj;
+}
