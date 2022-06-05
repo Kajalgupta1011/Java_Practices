@@ -48,3 +48,55 @@ In the first example, g(10,1)=f(1,2)⋅f(1,5)=1, g(10,2)=f(2,2)⋅f(2,5)=2.
 
 ---------------------------------------------------------------
 ---------------------------------------------------------------
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static long mod = 1000000007;
+
+	public static long modExp(long a, long n){
+		if(n <= 0)
+			return 1;
+		else if(n % 2 == 0)
+			return modExp((a * a) % mod, n / 2);
+		else
+			return (a * modExp ((a * a) % mod, (n - 1) / 2)) % mod;
+	}
+	public static long f(long n, long pr){
+		long prod = 1;
+		long prPow = 1;
+		while(prPow <= n / pr){
+			prPow *= pr;
+		}
+		long sum = 0;
+		while(prPow != 0){
+			long div  = n/prPow;
+			div -= sum;
+			long pow  =modExp(prPow % mod, div);
+			prod = (prod * pow) % mod;
+			sum += div;
+			prPow /= pr;
+		}
+		return prod;
+
+	}
+	public static void main (String[] args) {
+        Scanner sc = new Scanner (System.in);
+		long x = sc.nextLong();
+		long n = sc.nextLong();
+		long ans = 1;
+		for(long i = 2; i*i <= x; i++){
+			if(x % i != 0)
+				continue;
+			ans = (ans * f(n, i)) % mod;
+			while(x % i == 0)
+				x /= i;
+		}
+
+		if(x > 1)
+			ans = (ans * f(n, x)) % mod;
+		System.out.println(ans);
+	}
+}
