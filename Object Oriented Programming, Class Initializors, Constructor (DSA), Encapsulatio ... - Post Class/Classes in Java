@@ -47,3 +47,44 @@ avg = (63 + 50 + 46 )/3 = 159 = 53
 
 ---------------------------------------------------------------
 ---------------------------------------------------------------
+static class Student
+{ 
+    String name;
+    int eng;
+    int maths;
+    int hindi;
+
+    //Enter your code here
+}
+static Student[] createStudentArray(int n)
+    {
+        Student[] st = new Student[n];
+        for(int i=0;i<n;i++){
+            st[i] = new Student();
+            st[i].name = sc.next();
+            st[i].eng = sc.nextInt();
+            st[i].maths = sc.nextInt();
+            st[i].hindi = sc.nextInt();
+
+        }
+        return st;
+    }
+    
+    static int engAverage(Student st[], int n)
+    {
+       int sumOfEnglish = 0;
+       for(int i=0;i<n;i++){
+           sumOfEnglish +=st[i].eng;
+       }
+       return sumOfEnglish/n;
+    }
+    
+    static int avgPercentageOfClass(Student st[], int n)
+    {
+        int sumOfAvgEachStudent=0;
+        for(int i=0;i<n;i++){
+            sumOfAvgEachStudent += (st[i].eng+st[i].maths+st[i].hindi)/3;
+
+        }
+        return sumOfAvgEachStudent/n;
+    }
