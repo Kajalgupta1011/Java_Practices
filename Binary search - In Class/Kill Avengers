@@ -1,0 +1,36 @@
+Kill Avengers
+Medium
+
+Time Limit: 2 sec
+Memory Limit: 128000 kB
+Problem Statement
+In a new plot by Hydra to kill the avengers, Doctor Zola comes up with a new form of poison composed of chromosomes A, C, T and G. The poison is a string of length n (where n is divisible by 4) with each of the four letters occurring exactly n/4 times. For example, GACT and AAGTGCCT are both fatal poisons.Help Doctor Zola’s plan by choosing one (maybe empty) substring of minimal length in given poision and replace it with the new string (containing A,T,G,C) to make that poison fatal quickly.
+Input
+The first line of input contains a single integer N. The next line of input contains a string S of size N.
+
+Constraints:-
+1 <= N <= 100000
+
+Note:- N is divisible by 4 and S will only contain {A, G, C, T}
+Output
+Print the length of the minimum length substring that can be replaced to detect the poison as fatal.
+Example
+Sample Input:-
+8
+GAAATAAA
+
+Sample Output:-
+5
+
+Explanation:-
+ATAAA can be replaced to TTCCG to get a fatal poison
+
+Sample Input:-
+4
+AAAA
+
+Sample Output:-
+3
+
+---------------------------------------------------------------
+---------------------------------------------------------------
