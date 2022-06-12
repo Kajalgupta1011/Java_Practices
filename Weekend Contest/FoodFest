@@ -1,0 +1,42 @@
+FoodFest (Contest)
+Medium
+
+Time Limit: 2 sec
+Memory Limit: 128000 kB
+Problem Statement
+Sara's team participated in an eating competition at FoodFest in which they are asked to eat at least P dishes.
+Sara's team consists of N members where a member i (1 <= i <= N ) takes Arr[i] minutes to finish a single dish. Your task is to find the minimum time to finish at least P dishes.
+
+Note: A member can eat a dish any number of times.
+Input
+First line of input contains two integers N and P. The next line of input contains N space separated integers depicting the values of Array.
+
+Constraints:-
+1 <= N <= 100000
+1 <= Arr[i] <= 10
+1 <= P <= 1000000000000
+Output
+Print the minimum time taken to eat at least P dishes.
+Example
+Sample Input:-
+4 10
+1 2 3 4
+
+Sample Output:-
+6
+
+Explanation:-
+1st member will eat 6 dishes
+2nd member will eat 3 dishes
+3rd member will eat 2 dishes
+4th member will eat 1 dishes
+total = 12
+
+Sample Input:-
+8 8
+1 1 1 1 1 1 1 1
+
+Sample Output:-
+1
+---------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------
