@@ -1,0 +1,45 @@
+Short String? (Contest)
+Easy
+
+Time Limit: 2 sec
+Memory Limit: 128000 kB
+Problem Statement
+All the strings in TonoLand contain only characters 'a' and 'b'. Moreover they always have length N.
+You need to find the minimum length of a string such that all the strings of TonoLand are its subsequences.
+
+Example: If n=2, strings of TonoLand are "aa", "ab", "ba", "bb".
+Input
+The first and the only line of input contains a number N.
+
+Constraints
+1 <= N <= 1000000
+Output
+Output a single integer, the output to this problem.
+Example
+Sample Input 1
+1
+
+Sample Output 1
+2
+
+Explanation: If N=1, then the possible strings of TonoLand are "a", and "b". The minimum length string such that both the strings are its subsequences is "ab".
+
+Sample Input 1
+2
+
+Sample Output 2
+4
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+// import java.lang.Math;
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		System.out.println(n + n);
+	}
+}
