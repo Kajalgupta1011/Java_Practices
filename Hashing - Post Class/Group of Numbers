@@ -1,0 +1,86 @@
+Group of Numbers
+Medium
+
+Time Limit: 2 sec
+Memory Limit: 128000 kB
+Problem Statement
+You are given an array a that contains N integers. All the integers in the array may not be distinct. The number of repetitions of each integer in the array is represented by ri. Your task is to print the integers in the decreasing order of their occurrence in the array.
+
+Note
+1. If ri > rj, then ai must be printed before aj.
+2. If ri == rj, then among ai and aj whichever has a larger value, is printed first.
+
+Here ri and rj is the number of repetitions of integers ai and aj in the array.
+Input
+The first line of the input contains an integer N.
+The second line contains N space- separated integers representing the elements of array a.
+
+Constraints
+1<= N <= 1000
+1<= ai <= 1000
+Output
+Print the space separated integers in the decreasing order of their occurrence in the array. The output must be printed in a single line.
+Example
+Sample input:
+6
+1 2 3 3 2 1
+
+Sample Output
+3 2 1
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+    // Your code here
+	Scanner sc = new Scanner(System.in);
+	int N = sc.nextInt();
+	
+	int arr[] = new int[N];
+	HashMap <Integer, Integer> map =new HashMap<>();
+	
+	for(int i = 0; i < N; i++){
+		arr[i] = sc.nextInt();
+        if(map.get(arr[i]) == null) map.put(arr[i], 1);
+		else map.put(arr[i], map.get(arr[i]) + 1);
+	}
+	int ms = map.size();
+	Freq freq[] = new Freq[ms];
+	int ind = 0;
+	for(Map.Entry < Integer, Integer > m:map.entrySet()){
+		freq[ind] = new Freq();
+		freq[ind].frequency = m.getValue();
+		freq[ind].number = m.getKey();
+		ind++;
+	}
+	SortPair(freq, ms);
+
+	for(int i = 0; i < ms; i++)System.out.print(freq[i].number+ " ");
+	}
+	static class Freq{
+		int frequency;
+		int number;
+	}
+	static Freq[] SortPair(Freq arr[], int n){
+		for(int i = 0; i < n-1; i++){
+			for(int j = 0; j<n-1-i; j++){
+				if(arr[j].frequency < arr[j+1].frequency){
+					Freq temp = arr[j];
+					arr[j] = arr[j + 1];
+					arr[j + 1] = temp;
+				}else if (arr[j].frequency == arr[j+1].frequency){
+					if(arr[j].number <arr[j+1].number){
+					Freq temp = arr[j];
+					arr[j] = arr[j+1];
+					arr[j+1] = temp;
+				 }
+				}
+			}
+		}return arr;
+	}
+  }
