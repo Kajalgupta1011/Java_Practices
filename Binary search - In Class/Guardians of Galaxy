@@ -41,3 +41,93 @@ Sample Output:-
 
 ---------------------------------------------------------------
 ---------------------------------------------------------------
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+                      // Your code here
+		// Scanner sc = new Scanner(System.in);
+        FastReader sc = new FastReader();
+        int n = sc.nextInt();
+        long[] arr = new long[n];
+        for (int i = 0; i < n; i++) {
+            arr[i]= sc.nextLong();
+        }
+        long l = 0;
+        long r= 1000000000;
+        long x=0;
+        while (l!=r){
+             x= (l+r)/2;
+            if(checkThrust(arr,x)) {
+                r=x;
+            }
+            else {
+                l=x+1;
+            }
+        }
+        System.out.print(l);
+	}
+	static boolean checkThrust(long[] arr,long r){
+        long thrust = r;
+        for (int i = 0; i < arr.length; i++) {
+            thrust = 2*thrust-arr[i];
+            if(thrust>=1000000000000L) return true;
+            if(thrust<0) return false;   
+        }
+        return true;
+    }
+
+    
+    static class FastReader {
+        BufferedReader br;
+        StringTokenizer st;
+
+        public FastReader()
+        {
+            br = new BufferedReader(
+                    new InputStreamReader(System.in));
+        }
+
+        String next()
+        {
+            while (st == null || !st.hasMoreElements()) {
+                try {
+                    st = new StringTokenizer(br.readLine());
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return st.nextToken();
+        }
+
+        int nextInt() { return Integer.parseInt(next()); }
+
+        long nextLong() { return Long.parseLong(next()); }
+
+        double nextDouble()
+        {
+            return Double.parseDouble(next());
+        }
+
+        String nextLine()
+        {
+            String str = "";
+            try {
+                if(st.hasMoreTokens()){
+                    str = st.nextToken("\n");
+                }
+                else{
+                    str = br.readLine();
+                }
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+            return str;
+        }
+    }
+}
