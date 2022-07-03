@@ -1,0 +1,70 @@
+Longest Distinct characters in string
+Easy
+
+Time Limit: 2 sec
+Memory Limit: 128000 kB
+Problem Statement
+Given a string S, you have to find the length of the longest substring of S containing all unique characters, i.e, no character is repeating within that substring.
+For example, for input string S = "abca", the output is 3 as "abc" is the longest substring with all distinct characters.
+Input
+The first line of input contains an integer T denoting the number of test cases.
+The first and the only line of each test case contains the string S.
+
+Constraints:
+1 ≤ T ≤ 100
+1 ≤ length of S ≤ 1000
+Output
+Print length of longest substring containing all the distinct characters of string.
+Note: The output substring should have all distinct characters.
+Example
+Sample Input:
+2
+abababcdefababcdab
+gccksfvrgccks
+
+Sample Output:
+6
+7
+--------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+                      // Your code here
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while(t-- >0){
+            String s = sc.next();
+            System.out.println(sizeOfUniqueChar(s));
+
+        }
+    }
+    static int sizeOfUniqueChar(String s){
+        int[] chars = new int[128];
+
+        int left = 0;
+        int right = 0;
+
+        int res = 0;
+        while (right < s.length()) {
+            char r = s.charAt(right);
+            chars[r]++;
+
+            while (chars[r] > 1) {
+                char l = s.charAt(left);
+                chars[l]--;
+                left++;
+            }
+
+            res = Math.max(res, right - left + 1);
+
+            right++;
+        }
+        return res;
+
+    }
+}
