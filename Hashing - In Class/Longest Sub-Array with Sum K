@@ -1,0 +1,78 @@
+
+Longest Sub-Array with Sum K
+Easy
+
+Time Limit: 2 sec
+Memory Limit: 128000 kB
+Problem Statement
+Given an array containing N integers and an integer K. Your task is to find the length of the longest Sub-Array with sum of the elements equal to the given value K.
+Input
+The first line of input contains an integer T denoting the number of test cases. Then T test cases follow. Each test case consists of two lines. The first line of each test case contains two integers N and K and the second line contains N space-separated elements of the array.
+
+Constraints:-
+1<=T<=500
+1<=N,K<=10^5
+-10^5<=A[i]<=10^5
+
+Sum of N over all test cases does not exceed 10^5
+Output
+For each test case, print the required length of the longest Sub-Array in a new line. If no such sub-array can be formed print 0.
+Example
+Sample Input:
+3
+6 15
+10 5 2 7 1 9
+6 -5
+-5 8 -14 2 4 12
+3 6
+-1 2 3
+
+Sample Output:
+4
+5
+0
+------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args)throws IOException, Exception {
+        // Scanner sc = new Scanner(System.in);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int T = Integer.parseInt(br.readLine().trim());
+		// int T = sc.nextInt();
+		// String[] tc = br.readLine().split("\\s");
+
+		// 	int T = Integer.parseInt(tc[0]);
+
+		for(int t = 0; t < T; t++){
+			String[] in = br.readLine().split("\\s");
+
+			int n = Integer.parseInt(in[0]);
+			int k = Integer.parseInt(in[1]);
+			// int n = Integer.parseInt(br.readLine().trim());
+			// int k = Integer.parseInt(br.readLine().trim());
+			String[] ar = br.readLine().split("\\s");
+			int arr[] = new int[n];
+			for(int i = 0; i < n; i++){
+				arr[i] = Integer.parseInt(ar[i]);
+			}
+			HashMap<Integer, Integer> map = new HashMap<>();
+			int ans = 0;
+			int sum = 0;
+			map.put(0, -1);
+			for(int i = 0; i < n; i++){
+				sum += arr[i];
+				if(map.get(sum) == null)
+					map.put(sum,i);
+				if(map.get(sum - k) != null)
+					ans = Math.max(ans, i - map.get(sum - k));
+			}
+			System.out.println(ans);
+		}
+	}
+}
