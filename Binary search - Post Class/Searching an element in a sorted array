@@ -34,3 +34,31 @@ Sample Output:
 
 ---------------------------------------------------------------
 ---------------------------------------------------------------
+static int isPresent(long arr[], int n, long k)
+{
+	int s = 0; 
+	int e = n - 1;
+	while (s <= e) {
+
+		// Finding the mid using floor division
+		int mid = s + ((e - s) / 2);
+
+		// k value is present at the middle of the array
+		if (arr[mid] == k) {
+			return 1;
+		}
+
+		// k value is present in the s subarray
+		else if (k < arr[mid]) {
+			e = mid - 1;
+		}
+
+		// k value is present in the e subarray
+		else if (k > arr[mid]) {
+			s = mid + 1;
+		}
+	}
+
+	// k value is not present in the array
+	return -1;
+}
