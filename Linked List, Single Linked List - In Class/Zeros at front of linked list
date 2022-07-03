@@ -1,0 +1,97 @@
+Zeros at front of linked list
+Easy
+
+Problem Statement
+Given a linked list, the task is to move all 0’s to the front of the linked list. The order of all another element except 0 should be same after rearrangement.
+
+Note: Avoid use of any type of Java Collection frameworks.
+
+Note: For custom input/output, enter the list in reverse order, and the output will also be in reverse order.
+Input
+User Task:
+Since this will be a functional problem, you don't have to take input. You just have to complete the function moveZeroes() that takes head node as parameter.
+
+Constraints:
+1 <= T <= 100
+1 <= N <= 100000
+0<=Node.data<=100000
+
+Note:- Sum of all test cases doesn't exceed 10^5
+
+Output
+Return the head of the modified linked list.
+Example
+Input:
+2
+10
+0 4 0 5 0 2 1 0 1 0
+7
+1 1 2 3 0 0 0
+
+Output:
+0 0 0 0 0 1 1 2 5 4
+0 0 0 3 2 1 1
+
+Explanation:
+Testcase 1:
+Original list was 0->4->0->5->0->2->1->0->1->0->NULL.
+After processing list becomes 0->0->0->0->0->4->5->2->1->1->NULL.
+
+Testcase 2:
+Original list was 1->1->2->3->0->0->0->NULL.
+After processing list becomes 0->0->0->1->1->2->3->NULL.
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+/*
+class Node{
+    int data;
+    Node next;
+    Node(int d){
+        data=d;
+        next=null;
+    }
+}
+*/
+
+static public Node moveZeroes(Node head)
+{
+    if (head == null)
+			return null;
+
+		// Traverse the list from second node.
+		Node temp = (head).next, prev = head;
+		while (temp != null) {
+
+			// If current node is 0, move to
+			// beginning of linked list
+			if (temp.data == 0) {
+
+				// Disconnect node from its
+				// current position
+				Node curr = temp;
+				temp = temp.next;
+				prev.next = temp;
+
+				// Move to beginning
+				curr.next = (head);
+				head = curr;
+			}
+
+			// For non-zero values
+			else {
+				prev = temp;
+				temp = temp.next;
+			}
+		}
+		return head;
+	}
+	static void display(Node head)
+	{
+		while (head != null) {
+			System.out.print(head.data + " ");
+			head = head.next;
+		}
+		System.out.println();
+}
