@@ -34,3 +34,65 @@ Sample Output
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	static long merge(int arr[], int start, int end){
+        long count = 0;
+        if(start < end){
+            int mid = start + (end - start)/2;
+            count += merge(arr, start, mid);
+            count += merge(arr, mid+1, end);
+            
+            count += mergeSort(arr, start, mid, end);
+        }
+        
+        return count;
+    }
+    
+    static long mergeSort(int arr[], int start, int mid, int end){
+
+        int[] left = Arrays.copyOfRange(arr, start, mid+1);
+        int[] right = Arrays.copyOfRange(arr, mid+1, end+1);
+
+        long count = 0;
+        int idx1 = 0;
+        int idx2 = 0;
+        int x = start;
+        
+        while(idx1 < left.length && idx2 < right.length){
+            if(left[idx1] <= right[idx2]){
+                arr[x++] = left[idx1++];
+            }else{
+                arr[x++] = right[idx2++];
+                count += mid-start+1-idx1;
+                
+            }
+           
+        }
+            
+            while(idx1 < left.length){
+                arr[x++] = left[idx1++];
+            }
+            
+            while(idx2 < right.length){
+                arr[x++] = right[idx2++];
+            }
+            
+            return count;
+    }
+	public static void main (String[] args) {
+                      // Your code here
+		Scanner sc = new Scanner(System.in);
+		int n=sc.nextInt();
+		int arr[] = new int[n];
+		for(int i=0; i<n; i++){
+			arr[i] = sc.nextInt();
+		}
+
+		System.out.print(merge(arr, 0, n-1));
+	}
+}
