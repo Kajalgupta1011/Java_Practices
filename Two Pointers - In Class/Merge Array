@@ -1,0 +1,69 @@
+Merge array
+Easy
+
+Time Limit: 2 sec
+Memory Limit: 128000 kB
+Problem Statement
+Given two sorted array your task is to merge these two arrays into a single array such that the merged array is also sorted
+Input
+First line contain two integers N and M the size of arrays
+Second line contains N separated integers the elements of first array
+Third line contains M separated integers elements of second array
+
+Constraints:-
+1<=N,M<=10000
+1<=arr1[], arr2[] <=100000
+Output
+Output the merged array
+Example
+Sample Input:-
+3 4
+1 4 7
+1 3 3 9
+
+Sample Output:-
+1 1 3 3 4 7 9
+
+----------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
+
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+                      // Your code here
+         Scanner sc = new Scanner(System.in);
+         int n = sc.nextInt();
+         int m = sc.nextInt(); 
+         int arr[] =new int[n];
+         int brr[] = new int[m];
+         for(int i=0;i<n;i++)
+            arr[i] = sc.nextInt();
+         for(int j=0;j<m;j++) 
+             brr[j]= sc.nextInt();
+             int crr[]=new int[n+m];
+             int i=0;
+             int j=0;
+             int k=0;
+             while(i<n&&j<m){
+                 if(arr[i]<brr[j]){
+                 crr[k++]=arr[i++];
+             }else{
+                 crr[k++]=brr[j++];
+             }
+             }
+
+             while(i<n){
+                 crr[k++]=arr[i++];
+             }
+             while(j<m){
+                 crr[k++]=brr[j++];
+             }
+             for(i=0;i<(m+n);i++){
+                 System.out.print(crr[i]+" ");
+             }
+	}
+}
