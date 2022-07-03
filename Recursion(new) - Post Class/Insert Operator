@@ -31,3 +31,35 @@ NO
 
 ---------------------------------------------------------------
 ---------------------------------------------------------------
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+class Main {
+	static String result = "NO";
+	public static void main (String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n=  sc.nextInt();
+		long b = sc.nextLong();
+		long []arr = new long [n];
+		
+
+		for(long i=0; i<n; i++) {
+				arr[(int) i] = sc.nextLong();
+			}
+		power(arr,0,b,0);
+		System.out.println(result);
+	}
+	public static void power(long[]arr, int ind, long target,long sum) {
+		
+		if(ind==arr.length) {
+			if(sum==target) {
+				result = "YES";
+			}
+			return;
+		}
+		//for + 
+		power(arr, ind+1, target ,sum + arr[ind]);
+		
+		//for -
+		power(arr, ind+1, target ,sum - arr[ind]);
+	}
+}
